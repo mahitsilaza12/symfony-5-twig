@@ -1,0 +1,10 @@
+{{ include('page/layouts/header.html.twig') }}
+<div class="row ">
+    <div class="col-md-6 mx-auto ">
+        {#        mx-auto nahatong anio lasa centre#}
+{#        <h1>Update {{ district.id }}</h1>#}
+        {{ include('commune/form.html.twig',{submitButtonText:'update'}) }}
+    </div>
+
+</div>
+{{ include('page/layouts/footer.html.twig') }}

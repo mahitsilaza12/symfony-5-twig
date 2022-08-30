@@ -1,0 +1,38 @@
+
+{{ include('page/layouts/header.html.twig') }} 
+<h1>Liste des formation sanitaire </h1> 
+  <div class="row">
+{% for formations in formation %}
+
+                    <!-- Column -->
+                   
+                    <div class="col-md-4 col-lg-4 col-xlg-4">
+                        <div class="card card-hover">
+                         <a href="{{path('app_deletee',{id:formations.id})}}" data-placement="top" title="Suprimee">
+                                                </i><i class="mdi mdi-close"></i>
+                                            </a> 
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard">{{ formations.serv.libelleOffre }}</i></h1>
+                                <h6 class="text-white">{{formations.id}}</h6>
+                                <h6 class="text-white">Status : {{ formations.isStatus }}</h6>
+                                <h5 class="text-white">Commune : {{ formations.commune.libelleCommune }}</h5>
+                                <h5 class="text-white">Adresse : {{ formations.getAdressFS }}</h5>
+                         <a href="{{path('app_show_formation',{id : formations.id} )}}"> <span class="badge badge-pill badge-dark float-right">  Detail </span></a>
+                            </div>
+                        </div>
+                    </div>
+                   
+                 {% else %}
+                  <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                <h6 class="text-white">Pas de formation</h6>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+  </div>
+
+{{ include('page/layouts/footer.html.twig') }}
+  

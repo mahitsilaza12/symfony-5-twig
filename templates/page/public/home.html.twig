@@ -1,0 +1,35 @@
+
+    {{ include('page/public/menu.html.twig') }}
+  <div class="card">
+    <div class="card-body">
+                                <h4 class="card-title m-b-0">Recent Posts</h4>
+                            </div>
+                    {% for actualites in actualite %}
+
+                          
+                            <div class="comment-widgets scrollable">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="p-2"><img src="{{ (actualites.fichier ? vich_uploader_asset(actualites) : asset('assets/images/background/img4.jpg')) }}" alt="user" width="260" ></div>
+                                    <div class="comment-text w-50">
+                                        <h6 class="font-medium">{{ actualites.user.firstName }} {{actualites.user.lastName}}</h6>
+                                        <span class="m-b-15 d-block">{{actualites.description}} </span>
+                                        <div class="comment-footer">
+                                        <span class="text-muted float-right">{{actualites.createdAt|date}}</span> 
+                                              {%  if(app.user == actualites.user) %}
+                                           <a href="{{path('app_show_actualit',{id : actualites.id} )}}"> <button type="button" class="btn btn-success btn-sm">
+                                            Edit
+                                            </button></a>
+                                            <a href="{{path('app_delete_actualit',{id:actualites.id})}}">
+                                            <button type="button" class="btn btn-danger btn-sm">Supprimee</button></a>
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                 {% else %}
+                            <p>pas d'actualite</p>
+                        {% endfor %}
+                            
+                            </div>
+                        </div>
+    {{ include('page/public/footer.html.twig') }}

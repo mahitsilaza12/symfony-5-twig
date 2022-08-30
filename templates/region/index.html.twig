@@ -1,0 +1,51 @@
+
+{{ include('page/layouts/header.html.twig') }}
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Liste des regions</h5>
+            <button>
+                <a class="btn btn-default btn-outline sbold" href="{{ path('app_create_region')  }}" >
+                    <i class="fa fa-plus"></i> Ajouter
+                </a>
+            </button>
+            <div class="table-responsive">
+                <table id="zero_config" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        {# <th>Id</th> #}
+                        <th>Nom du region</th>
+                        <th span="2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for regions in region %}
+                    <tr>
+                        {# <td>{{ regions.id }}</td> #}
+                        <td>{{ regions.libelleRegion }}</td>
+                        <td>
+                            <a class="btn btn-success btn-outline sbold" href="{{path('app_show',{id : regions.id} )}}">
+                                <i class="fa fa-edit"></i> Modifier</a>
+                            <a class="btn btn-danger btn-outline sbold"  href="{{path('app_delete',{id:regions.id})}}">
+                                <i class="fa fa-delete"></i> Supprimer</a>
+                        </td>
+                        {% else %}
+                            <p>pas de formation</p>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        {# <th>Id</th> #}
+                        <th>Nom du region</th>
+                        <th span="2">Action</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+</main>
+{{ include('page/layouts/footer.html.twig') }}
